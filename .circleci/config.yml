@@ -1,0 +1,55 @@
+aliases:
+  - &install-tools
+    name: Install tools
+    command: |
+      sudo npm install -g npm@latest
+
+  - &restore-npm-cache
+    key: dependency-cache-{{ checksum "package.json" }}
+
+  - &save-npm-cache
+    key: dependency-cache-{{ checksum "package.json" }}
+    paths:
+      - node_modules
+
+  - &npm-install
+    name: Install packages
+    command: npm install
+
+defaults: &defaults
+  working_directory: /tmp/web
+  docker:
+    - image: circleci/node:8-stretch
+
+version: 2
+
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: *install-tools
+      - restore-cache: *restore-npm-cache
+      - run: *npm-install
+      - save-cache: *save-npm-cache      
+      - persist_to_workspace:
+          root: /tmp/web
+          paths:
+            - .
+  build_www:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /tmp/web
+      - run:
+          name: Build
+          command: npm run build
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - install
+      - build_www:
+          requires:
+            - install
