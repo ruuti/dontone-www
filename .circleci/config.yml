@@ -44,6 +44,26 @@ jobs:
       - run:
           name: Build
           command: npm run build
+      - persist_to_workspace:
+          root: /tmp/web
+          paths:
+            - .
+  release_www:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /tmp/web
+      - run:
+          name: Create docs dir from dist
+          command: cp -r dist/ docs/
+      - run:
+          name: Push docs
+          command: |
+            git config --local user.name "Release Bot"
+            git config --local user.email "dotone-www-git@dot0x01.com"
+            git add ./docs/
+            git commit -m "Release [ci skip]"
+            git push origin master
 
 workflows:
   version: 2
@@ -53,3 +73,9 @@ workflows:
       - build_www:
           requires:
             - install
+      - release_www:
+          requires:
+            - build_www
+          filters:
+            branches:
+              only: master
