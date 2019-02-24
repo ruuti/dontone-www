@@ -56,6 +56,9 @@ jobs:
       - run:
           name: Create docs dir from dist
           command: cp -r dist/ docs/
+      - add_ssh_keys:
+          fingerprints:
+            - "2e:d7:94:72:02:d1:0d:1f:b8:93:ba:fb:8e:98:f2:79"
       - run:
           name: Push docs
           command: |
