@@ -41,7 +41,28 @@ const clean = async () => (
   await del(paths.dist.dest)
 );
 
-// Minify scss files to css
+// Minify scss files to css to production
+const styleProd = () => (
+  gulp
+    .src(paths.styles.src)
+    .pipe(sass())
+    .on("error", sass.logError)
+    .pipe(
+      postcss(
+        [
+          autoprefixer(), 
+          cssnano()
+        ]
+      )
+    )
+    .pipe(
+      gulp.dest(
+        paths.styles.dest
+      )
+    )
+);
+
+// Minify scss files to css with sourcemaps
 const style = () => (
   gulp
     .src(paths.styles.src)
@@ -88,7 +109,7 @@ const reload = () =>
 // Build
 const build = async () => {
   await clean();
-  style();
+  styleProd();
   html();
   favicons();
 };
