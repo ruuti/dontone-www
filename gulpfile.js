@@ -22,8 +22,19 @@ const paths = {
   html: {
     src: "src/views/**/*.pug",
     dest: "dist/"
+  },
+  favico : {
+    src: "src/favicon/*",
+    dest: "dist/static/"
   }
 };
+
+// Copy favicons
+const favicons = async () => (
+  gulp
+    .src(paths.favico.src)
+    .pipe(gulp.dest(paths.favico.dest))
+);
 
 // Delete dest directory
 const clean = async () => (
@@ -79,6 +90,7 @@ const build = async () => {
   await clean();
   style();
   html();
+  favicons();
 };
 
 // Watch files and reload onchange
@@ -90,6 +102,7 @@ const watch = async () => {
   // Build assets
   style();
   html();
+  favicons();
   
   // Init auto reload
   browserSync.init({
@@ -106,6 +119,11 @@ const watch = async () => {
   // watch .pug
   gulp.watch(
     paths.html.src, html
+  ).on('change', browserSync.reload);
+
+  // watch favicons
+  gulp.watch(
+    paths.favico.src, favicons
   ).on('change', browserSync.reload);
 };
 
