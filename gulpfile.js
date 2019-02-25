@@ -20,7 +20,7 @@ const paths = {
     dest: "dist/static/css"
   },
   html: {
-    src: "src/views/**/*.pug",
+    src: "src/views/**/[^_]*.pug",
     dest: "dist/"
   },
   favico : {
