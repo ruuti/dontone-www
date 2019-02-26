@@ -27,3 +27,9 @@ cp -r dist/ docs/
 ```
 
 ### 3. Push to master
+
+```
+git add docs
+git commit -m 'MESSAGE'
+git push
+```
