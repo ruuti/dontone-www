@@ -1,0 +1,27 @@
+.error-page {
+  text-align: center;
+
+  h1 {
+    font-size: 5em;
+    line-height: 1em;
+    padding: 0px;
+    margin: 0px;
+    color: #72e0d1;
+  }
+
+  p {
+    font-weight: bold;
+    animation: 5s shake infinite alternate;
+    animation-delay : .5s;
+    color: #72e0d1;
+  }
+}
+
+@keyframes shake {
+  0% { transform: skewX(-60deg); }
+  1% { transform: skewX(60deg); }
+  2% { transform: skewX(-60deg); }
+  3% { transform: skewX(60deg); }
+  4% { transform: skewX(0deg); }
+  100% { transform: skewX(0deg); }
+}
