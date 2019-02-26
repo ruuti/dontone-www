@@ -16,6 +16,7 @@
   --blend-color-3: transparent;
   --blend-color-4: #fb909a;
   --blend-color-5: #1c1cc9;
+  overflow: hidden;
 }
 
 .glitch {
@@ -37,7 +38,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     #logo {
       width: 120px;
       height: 120px;
@@ -86,7 +87,7 @@
 }
 
 @keyframes glitch-anim-1 {
-  0% { 
+  0% {
     opacity: 1;
     transform: translate3d(var(--gap-horizontal),0,0);
     -webkit-clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
@@ -145,7 +146,7 @@
 }
 
 @keyframes glitch-anim-2 {
-  0% { 
+  0% {
     opacity: 1;
     transform: translate3d(calc(-1 * var(--gap-horizontal)),0,0);
     -webkit-clip-path: polygon(0 25%, 100% 25%, 100% 30%, 0 30%);
@@ -204,7 +205,7 @@
 }
 
 @keyframes glitch-anim-3 {
-  0% { 
+  0% {
     opacity: 1;
     transform: translate3d(0, calc(-1 * var(--gap-vertical)), 0) scale3d(-1,-1,1);
     -webkit-clip-path: polygon(0 1%, 100% 1%, 100% 3%, 0 3%);
@@ -295,7 +296,7 @@
 }
 
 @keyframes glitch-anim-text {
-  0% { 
+  0% {
     transform: translate3d(calc(-1 * var(--gap-horizontal)),0,0) scale3d(-1,-1,1);
     -webkit-clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%);
     clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%);
@@ -339,8 +340,8 @@
 }
 
 @keyframes glitch-anim-flash {
-  0%, 5% { 
-    opacity: 0.2; 
+  0%, 5% {
+    opacity: 0.2;
     transform: translate3d(var(--gap-horizontal), var(--gap-vertical), 0);
   }
   5.5%, 100% {
