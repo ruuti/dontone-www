@@ -1,5 +1,5 @@
 // gulpfile.js
-  
+
 const gulp = require("gulp"),
       sass = require("gulp-sass"),
       postcss = require("gulp-postcss"),
@@ -50,7 +50,7 @@ const styleProd = () => (
     .pipe(
       postcss(
         [
-          autoprefixer(), 
+          autoprefixer(),
           cssnano()
         ]
       )
@@ -72,7 +72,7 @@ const style = () => (
     .pipe(
       postcss(
         [
-          autoprefixer(), 
+          autoprefixer(),
           cssnano()
         ]
       )
@@ -116,7 +116,7 @@ const build = async () => {
 
 // Watch files and reload onchange
 const watch = async () => {
-  
+
   // Clear dest
   await clean();
 
@@ -124,19 +124,19 @@ const watch = async () => {
   style();
   html();
   favicons();
-  
+
   // Init auto reload
   browserSync.init({
     server: {
       baseDir: "./dist/"
     }
   });
-  
+
   // watch .scss
   gulp.watch(
     paths.styles.src, style
   ).on('change', browserSync.reload);
-  
+
   // watch .pug
   gulp.watch(
     paths.html.src, html

@@ -19,7 +19,7 @@ aliases:
 defaults: &defaults
   working_directory: /tmp/web
   docker:
-    - image: circleci/node:8-stretch
+    - image: circleci/node:10.15-stretch
 
 version: 2
 
@@ -31,7 +31,7 @@ jobs:
       - run: *install-tools
       - restore-cache: *restore-npm-cache
       - run: *npm-install
-      - save-cache: *save-npm-cache      
+      - save-cache: *save-npm-cache
       - persist_to_workspace:
           root: /tmp/web
           paths:

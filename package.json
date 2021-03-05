@@ -1,6 +1,6 @@
 {
   "name": "dotone-www",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,21 +11,22 @@
     "type": "git",
     "url": "git+https://github.com/ruuti/dotone-www.git"
   },
-  "author": "Miikka Värri",
+  "author": "Miikka V",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ruuti/dotone-www/issues"
   },
   "homepage": "https://github.com/ruuti/dotone-www#readme",
   "devDependencies": {
-    "autoprefixer": "^9.4.8",
-    "browser-sync": "^2.3.1",
+    "autoprefixer": "9.8.6",
+    "browser-sync": "^2.26.14",
     "cssnano": "^4.1.10",
-    "del": "^3.0.0",
-    "gulp": "^4.0.0",
-    "gulp-postcss": "^8.0.0",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^9.0.0",
     "gulp-pug": "^4.0.1",
-    "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.5"
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "postcss": "^8.2.7"
   }
 }
