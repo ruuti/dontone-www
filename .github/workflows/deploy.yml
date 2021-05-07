@@ -21,8 +21,8 @@ jobs:
       - name: Deploy 🚀
         uses: EndBug/add-and-commit@v7.2.0
         with:
-          add: ./docs/
-          author_name: Release Bot
-          author_email: dotone-www-git@dot0x01.com
+          add: 'docs'
+          author_name: 'Release Bot'
+          author_email: 'dotone-www-git@dot0x01.com'
           branch: master
-          message: Release [ci skip]
+          message: 'Release [ci skip]'
