@@ -23,6 +23,8 @@ jobs:
           source: 'dist'
           target: 'docs'
       - name: Test setup
+        run: cp -r dist/ docs/
+      - name: Test setup
         run: ls -al
       - name: Deploy 🚀
         uses: EndBug/add-and-commit@v7.2.0
