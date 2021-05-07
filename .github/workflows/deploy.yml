@@ -17,7 +17,7 @@ jobs:
       - name: Build (1/2) 🔧
         run: npm run build
       - name: Test setup
-        run: cp -r dist/* docs/*
+        run: cp -r dist/* docs/
       - name: Test setup
         run: ls -al
       - name: Deploy 🚀
