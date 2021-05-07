@@ -14,10 +14,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Install 🔧
         run: npm install
-      - name: Build 🔧
-        run: |
-          npm run build
-          cp -r dist/ docs/
+      - name: Build (1/2) 🔧
+        run: npm run build
+      - name: Build (2/2) 🔧
+        run: cp -r dist/ docs/
       - name: Deploy 🚀
         uses: EndBug/add-and-commit@v7.2.0
         with:
