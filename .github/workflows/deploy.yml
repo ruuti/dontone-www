@@ -23,7 +23,7 @@ jobs:
           source: 'dist'
           target: 'docs'
       - name: Test setup
-        run: cp -r dist/ docs/
+        run: cp -r dist/* docs/*
       - name: Test setup
         run: ls -al
       - name: Deploy 🚀
