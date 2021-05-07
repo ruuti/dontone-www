@@ -17,8 +17,11 @@ jobs:
       - name: Build (1/2) 🔧
         run: npm run build
       - name: Build (2/2) 🔧
-        uses: actions/checkout@v2
-        run: cp -r dist/ docs/
+        uses: canastro/copy-file-action@master
+        with:
+          flags: '-r'
+          source: 'dist'
+          target: 'docs'
       - name: Deploy 🚀
         uses: EndBug/add-and-commit@v7.2.0
         with:
