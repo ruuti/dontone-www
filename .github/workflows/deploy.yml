@@ -1,0 +1,28 @@
+name: Deploy pages
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+      - name: Install 🔧
+        run: npm install
+      - name: Build 🔧
+        run: |
+          npm run build
+          cp -r dist/ docs/
+      - name: Deploy 🚀
+        uses: EndBug/add-and-commit@v7.2.0
+        with:
+          add: ./docs/
+          author_name: Release Bot
+          author_email: dotone-www-git@dot0x01.com
+          branch: master
+          message: Release [ci skip]
