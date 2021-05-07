@@ -19,7 +19,7 @@ aliases:
 defaults: &defaults
   working_directory: /tmp/web
   docker:
-    - image: circleci/node:10.15-stretch
+    - image: circleci/node:10.16-stretch
 
 version: 2
 
