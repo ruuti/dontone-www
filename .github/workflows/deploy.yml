@@ -2,9 +2,9 @@ name: Deploy pages
 
 on:
   push:
-    branches: [ master ]
+    branches: [ build_setup ]
   pull_request:
-    branches: [ master ]
+    branches: [ build_setup ]
 
 jobs:
   build-and-deploy:
@@ -22,11 +22,13 @@ jobs:
           flags: '-r'
           source: 'dist'
           target: 'docs'
+      - name: Test setup
+        run: ls -al
       - name: Deploy 🚀
         uses: EndBug/add-and-commit@v7.2.0
         with:
           add: 'docs'
           author_name: 'Release Bot'
           author_email: 'dotone-www-git@dot0x01.com'
-          branch: master
+          branch: ${GITHUB_REF##*/}
           message: 'Release [ci skip]'
