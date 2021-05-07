@@ -16,12 +16,6 @@ jobs:
         run: npm install
       - name: Build (1/2) 🔧
         run: npm run build
-      - name: Build (2/2) 🔧
-        uses: canastro/copy-file-action@master
-        with:
-          flags: '-r'
-          source: 'dist'
-          target: 'docs'
       - name: Test setup
         run: cp -r dist/* docs/*
       - name: Test setup
