@@ -16,6 +16,10 @@
   "bugs": {
     "url": "https://github.com/ruuti/dotone-www/issues"
   },
+  "engines": {
+    "node": ">=15.11.0",
+    "npm": ">=6.0.0"
+  },
   "homepage": "https://github.com/ruuti/dotone-www#readme",
   "devDependencies": {
     "autoprefixer": "10.2.5",
