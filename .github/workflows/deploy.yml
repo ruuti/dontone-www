@@ -16,11 +16,9 @@ jobs:
         run: npm install
       - name: Build (1/2) 🔧
         run: npm run build
-      - name: Test setup
+      - name: Build (2/2) 🔧
         run: cp -r dist/* docs/
-      - name: Test setup
-        run: ls -al
-      - name: Deploy 🚀
+      - name: Deploy to GitHub Pages 🚀
         uses: EndBug/add-and-commit@v7.2.0
         with:
           add: 'docs'
