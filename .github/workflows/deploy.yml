@@ -2,9 +2,9 @@ name: Deploy pages
 
 on:
   push:
-    branches: [ build_setup ]
+    branches: [ master ]
   pull_request:
-    branches: [ build_setup ]
+    branches: [ master ]
 
 jobs:
   build-and-deploy:
