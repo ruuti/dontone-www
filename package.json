@@ -3,9 +3,11 @@
   "version": "0.0.3",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp build",
-    "start": "gulp watch"
+    "build": "webpack --mode=production",
+    "build:dev": "webpack --mode=development",
+    "start:dev": "webpack serve --mode=development",
+    "lint": "eslint '**/*.js' --ignore-pattern node_modules/",
+    "lint:fix": "eslint '**/*.js' --ignore-pattern node_modules/ --fix"
   },
   "repository": {
     "type": "git",
@@ -23,14 +25,20 @@
   "homepage": "https://github.com/ruuti/dotone-www#readme",
   "devDependencies": {
     "autoprefixer": "10.2.5",
-    "browser-sync": "^2.26.14",
-    "cssnano": "5.0.2",
-    "del": "^6.0.0",
-    "gulp": "^4.0.2",
-    "gulp-postcss": "^9.0.0",
-    "gulp-pug": "^4.0.1",
-    "gulp-sass": "^4.1.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "postcss": "8.2.14"
+    "copy-webpack-plugin": "^8.1.1",
+    "css-loader": "^5.2.4",
+    "cssnano": "^5.0.2",
+    "eslint": "^7.26.0",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "postcss": "8.2.14",
+    "postcss-loader": "^5.2.0",
+    "pug": "^3.0.2",
+    "pug-loader": "^2.4.0",
+    "sass": "^1.32.12",
+    "sass-loader": "^11.0.1",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }

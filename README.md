@@ -9,7 +9,7 @@ npm install
 ## Development
 
 ```
-npm start
+npm run start:dev
 ```
 
 ## Release
@@ -18,12 +18,6 @@ npm start
 
 ```
 npm run build
-```
-
-### 2. Copy assets:
-
-```
-cp -r dist/ docs/
 ```
 
 ### 3. Push to master
