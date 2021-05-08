@@ -2,9 +2,9 @@ name: Deploy pages
 
 on:
   push:
-    branches: [ master ]
+    branches: [ build_setup ]
   pull_request:
-    branches: [ master ]
+    branches: [ build_setup ]
 
 jobs:
   build-and-deploy:
@@ -17,16 +17,11 @@ jobs:
       - name: Build (1/2) 🔧
         run: npm run build
       - name: Build (2/2) 🔧
-        uses: canastro/copy-file-action@master
-        with:
-          flags: '-r'
-          source: 'dist'
-          target: 'docs'
-      - name: Deploy 🚀
+        run: cp -r dist/* docs/
+      - name: Deploy to GitHub Pages 🚀
         uses: EndBug/add-and-commit@v7.2.0
         with:
           add: 'docs'
           author_name: 'Release Bot'
           author_email: 'dotone-www-git@dot0x01.com'
-          branch: master
           message: 'Release [ci skip]'
