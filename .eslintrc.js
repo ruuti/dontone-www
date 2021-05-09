@@ -1,10 +1,15 @@
 module.exports = {
   "env": {
-    "node": true,
     "commonjs": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
   },
-  "extends": "eslint:recommended",
+  "extends": "eslint:all",
+  "ignorePatterns": [
+    "node_modules/",
+    ".docs/",
+    "dist/"
+  ],
   "parserOptions": {
     "ecmaVersion": 12
   },
@@ -17,13 +22,27 @@ module.exports = {
       "error",
       "unix"
     ],
+    "no-magic-numbers": ["off"],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": "always",
+        "ObjectPattern": {
+          "minProperties": 1,
+          "multiline": true
+        }
+      }
+    ],
+    "one-var": ["off"],
     "quotes": [
       "error",
       "double"
     ],
+    "require-unicode-regexp": ["off"],
     "semi": [
       "error",
       "always"
-    ]
+    ],
+    "strict": ["off"]
   }
 };
