@@ -6,74 +6,109 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const config = {
-  entry: {
-    "styles": "./src/styles/style.scss",
+  "devServer": {
+    "compress": true,
+    "contentBase": path.join(
+      __dirname,
+      "dist"
+    ),
+    "port": 3000
   },
-  output: {
-    filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist")
+  "entry": {
+    "styles": "./src/styles/style.scss"
   },
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    port: 3000,
+  "module": {
+    "rules": [
+      {
+        "test": /\.pug$/,
+        "use": ["pug-loader"]
+      },
+      {
+        "test": /\.scss$/,
+        "use": [
+          // Extract and save the final CSS.
+          MiniCssExtractPlugin.loader,
+
+          /*
+           * Load the CSS, set url = false to prevent following
+           * urls to fonts and images.
+           */
+          {
+            "loader": "css-loader",
+            "options": {
+              "importLoaders": 1,
+              "url": false
+            }
+          },
+          // Add browser prefixes and minify CSS.
+          {
+            "loader": "postcss-loader",
+            "options": {
+              "postcssOptions": {
+                "plugins": [
+                  autoprefixer(),
+                  cssnano()
+                ]
+              }
+            }
+          },
+          // Load the SCSS/SASS
+          {
+            "loader": "sass-loader"
+          }
+        ]
+      }
+    ]
   },
-  plugins: [
+  "output": {
+    "filename": "[name].bundle.js",
+    "path": path.resolve(
+      __dirname,
+      "dist"
+    )
+  },
+  "plugins": [
     new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: "src/views/index.pug",
-      inject: false
+      "filename": "index.html",
+      "inject": false,
+      "template": "src/views/index.pug"
     }),
     new HtmlWebpackPlugin({
-      filename: "404.html",
-      template: "src/views/404.pug",
-      inject: false
+      "filename": "404.html",
+      "inject": false,
+      "template": "src/views/404.pug"
     }),
     new CopyWebpackPlugin({
-      patterns: [
+      "patterns": [
         {
-          from: "src/favicon",
-          to: "static"
+          "from": "src/favicon",
+          "to": "static"
         }
       ]
     }),
     new CopyWebpackPlugin({
-      patterns: [
+      "patterns": [
         {
-          from: "src/domain_config",
-          to: ""
+          "from": "src/domain_config",
+          "to": ""
         }
       ]
     }),
     new MiniCssExtractPlugin({
-      filename: "static/css/style.css"
+      "filename": "static/css/style.css"
     })
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.pug$/,
-        use: ["pug-loader"]
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          // Extract and save the final CSS.
-          MiniCssExtractPlugin.loader,
-          // Load the CSS, set url = false to prevent following urls to fonts and images.
-          { loader: "css-loader", options: { url: false, importLoaders: 1 } },
-          // Add browser prefixes and minify CSS.
-          { loader: "postcss-loader", options: { postcssOptions: { plugins: [autoprefixer(), cssnano()] }}},
-          // Load the SCSS/SASS
-          { loader: "sass-loader" },
-        ],
-      }
-    ]
-  }
+  ]
 };
 module.exports = (env, argv) => {
+
   if (argv.mode === "production") {
-    config.output.path = path.resolve(__dirname, "docs");
+
+    config.output.path = path.resolve(
+      __dirname,
+      "docs"
+    );
+
   }
   return config;
+
 };
